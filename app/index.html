@@ -63,23 +63,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <paper-toolbar id="mainToolbar">
         <span class="flex"></span>
 
-        <div class="appname bottom paper-font-display2">Adriatic House</div>
+        <div class="appname middle paper-font-display2">Adriatic House</div>
 
       </paper-toolbar>
 
       <!-- Main Content -->
-        <iron-pages attr-for-selected="data-route" selected="{{route}}">
+      <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
-          <section data-route="home">
-            <paper-material elevation="1">
-              <my-greeting></my-greeting>
-            </paper-material>
+        <section data-route="home">
+          <div class="panel">
+            <div class="feature big">
+              <div id="random"></div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="feature">
+              <div id="miso"></div>
+              <div id="miso"></div>
+            </div>
+            <div class="feature big">
+              <div id="house"></div>
+            </div>
+          </div>
+        </section>
 
-          </section>
+      </iron-pages>
 
-        </iron-pages>
-
-        </paper-header-panel>
+    </paper-header-panel>
 
     <paper-toast id="caching-complete"
                  duration="6000"
