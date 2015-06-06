@@ -20,6 +20,7 @@ var merge = require('merge-stream');
 var path = require('path');
 var fs = require('fs');
 var glob = require('glob');
+var s3 = require('gulp-s3');
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -38,6 +39,7 @@ var styleTask = function (stylesPath, srcs) {
       return path.join('app', stylesPath, src);
     }))
     .pipe($.changed(stylesPath, {extension: '.css'}))
+    .pipe($.less())
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
     .pipe(gulp.dest('.tmp/' + stylesPath))
     .pipe($.if('*.css', $.cssmin()))
@@ -47,7 +49,7 @@ var styleTask = function (stylesPath, srcs) {
 
 // Compile and Automatically Prefix Stylesheets
 gulp.task('styles', function () {
-  return styleTask('styles', ['**/*.css']);
+  return styleTask('styles', ['**/*.less']);
 });
 
 gulp.task('elements', function () {
@@ -195,7 +197,7 @@ gulp.task('serve', ['styles', 'elements', 'images'], function () {
   });
 
   gulp.watch(['app/**/*.html'], reload);
-  gulp.watch(['app/styles/**/*.{css}'], ['styles', reload]);
+  gulp.watch(['app/styles/**/*.less'], ['styles', reload]);
   gulp.watch(['app/elements/**/*.{css}'], ['elements', reload]);
   gulp.watch(['app/{scripts,elements}/**/*.js'], ['jshint']);
   gulp.watch(['app/images/**/*'], reload);
@@ -221,6 +223,15 @@ gulp.task('default', ['clean'], function (cb) {
     ['jshint', 'images', 'fonts', 'html'],
     'vulcanize', 'precache',
     cb);
+});
+
+gulp.task('publishToS3', function() {
+  return gulp.src('./dist/**')
+    .pipe(s3({
+      key: process.env.AWS_KEY,
+      secret: process.env.AWS_SECRET,
+      bucket: process.env.AWS_BUCKET
+    }));
 });
 
 // Load tasks for web-component-tester

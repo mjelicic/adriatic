@@ -1,0 +1,83 @@
+@import "../../bower_components/bootstrap/less/bootstrap";
+
+
+body {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.container-fluid {
+  padding: 55px 16px;
+
+  .feature {
+    margin-top: 2px;
+    @media (max-width: @screen-xs-max) {
+      margin-top: 5px;
+    }
+  }
+}
+
+.hero {
+  background-color: #f6f4ec;
+}
+
+flip-card {
+
+  back {
+    font-family: @font-family-monospace;
+
+    .contact-email {
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      a {
+        display: flex;
+        flex-direction: row;
+        color: #e2e2e2;
+      }
+
+      .glyphicon {
+        margin-left: 2px;
+        font-size: 32px;
+      }
+
+      div.email-text {
+        font-size: 12px;
+        line-height: 32px;
+        margin-left: 2px;
+      }
+
+    }
+  }
+}
+
+.location {
+  padding-top: 0;
+  height: 400px;
+}
+
+.col {
+  @media (max-width: @screen-xs-max) {
+    padding-left: 30px;
+  }
+}
+
+#contact {
+  background: url("../images/miso.jpg") no-repeat;
+  height: 100px;
+  background-size: contain;
+}
+
+#vertical {
+  background: url("../images/house.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 553px;
+}
+
+#hero {
+  background: url("../images/pool.jpg") no-repeat;
+  background-size: cover;
+  height: 400px;
+}
