@@ -68,7 +68,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <!-- Main Toolbar -->
       <paper-toolbar id="mainToolbar">
         <span class="flex"></span>
-        <div title></div>
+        <div title>
+          <facebook-button colorscheme="dark" layout="button" width="50" height="18" href="http://adriatic.house"></facebook-button>
+          <twitter-button type="share" href="http://adriatic.house" hashtag="adriatichouse"></twitter-button>
+          <gplus-one size="medium" annotation="none" href="http://adriatic.house"></gplus-one>
+        </div>
         <h1 class="appname middle paper-font-display2">Adriatic House</h1>
 
       </paper-toolbar>
@@ -80,23 +84,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <div class="container-fluid hero">
             <div class="row">
-              <div class="feature col-sm-5">
+              <div class="feature col col-sm-5">
                 <div id="vertical"></div>
               </div>
-              <div class="feature col col-sm-2">
-                <flip-card>
-                  <front>
-                    <div>Contact</div>
-                  </front>
-                  <back>
-                    <div class="contact-email">
-                      <a href="mailto:contact@adriatic.house">
-                        <iron-icon icon="communication:email"></iron-icon>
-                        <div class="email-text">contact@adriatic.house</div>
-                      </a>
-                    </div>
-                  </back>
-                </flip-card>
+              <div class="feature col col-sm-3">
+                <div class="small-card">
+                  <flip-card>
+                    <front>
+                      <div>Contact</div>
+                    </front>
+                    <back>
+                      <div class="contact-email">
+                        <a href="mailto:contact@adriatic.house">
+                          <iron-icon icon="communication:email"></iron-icon>
+                          <div class="email-text">contact@adriatic.house</div>
+                        </a>
+                      </div>
+                    </back>
+                  </flip-card>
+                </div>
+              </div>
+              <div class="feature col col-sm-3">
+                <div class="small-card">
+                  <flip-card>
+                    <front>
+                      <div>Book your stay</div>
+                    </front>
+                    <back>
+                      <div class="reservation">
+                        <a id="airbnb" aria-label="Airbnb" href="http://airbnb.adriatic.house" target="_blank"></a>
+                      </div>
+                    </back>
+                  </flip-card>
+                </div>
               </div>
               <div class="feature col col-sm-7">
                 <div id="hero"></div>
